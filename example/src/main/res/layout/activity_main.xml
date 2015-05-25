@@ -1,0 +1,118 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@android:color/white"
+              android:orientation="vertical"
+              tools:context=".MainActivity">
+
+    <TextView
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:padding="8dp"
+            android:layout_height="wrap_content"
+            android:text="Shadow view every view"
+            android:textSize="18sp"
+            />
+
+    <ScrollView android:layout_width="match_parent" android:layout_height="match_parent"
+                android:fillViewport="true"
+            >
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                      android:orientation="vertical"
+                >
+
+            <FrameLayout
+                    android:id="@+id/activity_main_shadow_view_a"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    >
+                <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+                           android:src="@mipmap/ic_launcher"
+                        />
+                <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                          android:gravity="center"
+                          android:text="Shadow View with FrameLayout"
+                          android:textSize="15sp"
+                        />
+            </FrameLayout>
+
+            <LinearLayout
+                    android:id="@+id/activity_main_shadow_view_b"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="32dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    >
+                <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
+                           android:src="@mipmap/ic_launcher"
+                        />
+                <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                          android:gravity="center"
+                          android:text="Shadow View with LinearLayout"
+                          android:textSize="15sp"
+                        />
+            </LinearLayout>
+
+            <LinearLayout
+                    android:id="@+id/activity_main_shadow_view_c"
+                    android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    >
+                <ImageView
+                        android:id="@+id/activity_main_shadow_view_c_iv"
+                        android:layout_width="wrap_content" android:layout_height="match_parent"
+                        android:src="@mipmap/ic_launcher"
+                        />
+                <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                          android:gravity="center"
+                          android:text="Shadow View with LinearLayout"
+                          android:textSize="15sp"
+                        />
+            </LinearLayout>
+
+
+            <LinearLayout
+                    android:id="@+id/activity_main_shadow_view_d"
+                    android:layout_width="150dp" android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="32dp"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:padding="8dp"
+                    >
+                <TextView android:layout_width="match_parent" android:layout_height="40dp"
+                          android:gravity="center"
+                          android:textSize="18sp"
+                          android:text="item 0"
+                        />
+                <TextView android:layout_width="match_parent" android:layout_height="40dp"
+                          android:gravity="center"
+                          android:textSize="18sp"
+                          android:text="item 1"
+                        />
+                <TextView android:layout_width="match_parent" android:layout_height="40dp"
+                          android:gravity="center"
+                          android:textSize="18sp"
+                          android:text="item 2"
+                        />
+                <TextView android:layout_width="match_parent" android:layout_height="40dp"
+                          android:gravity="center"
+                          android:textSize="18sp"
+                          android:text="item 3"
+                        />
+
+            </LinearLayout>
+
+            <View android:layout_width="match_parent" android:layout_height="100dp"
+                    />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
