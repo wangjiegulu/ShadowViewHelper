@@ -1,4 +1,4 @@
-package com.wnagjie.shadowviewhelper;
+package com.wangjie.shadowviewhelper;
 
 import android.graphics.Color;
 import android.os.Build;

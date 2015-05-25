@@ -1,4 +1,4 @@
-package com.wnagjie.shadowviewhelper.example;
+package com.wangjie.shadowviewhelper.example;
 
 import android.os.Bundle;
 import android.view.View;
@@ -7,8 +7,8 @@ import com.wangjie.androidbucket.utils.ABTextUtil;
 import com.wangjie.androidinject.annotation.annotations.base.AILayout;
 import com.wangjie.androidinject.annotation.annotations.base.AIView;
 import com.wangjie.androidinject.annotation.present.AIActionBarActivity;
-import com.wnagjie.shadowviewhelper.ShadowProperty;
-import com.wnagjie.shadowviewhelper.ShadowViewHelper;
+import com.wangjie.shadowviewhelper.ShadowProperty;
+import com.wangjie.shadowviewhelper.ShadowViewHelper;
 
 @AILayout(R.layout.activity_main)
 public class MainActivity extends AIActionBarActivity {
