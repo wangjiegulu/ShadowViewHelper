@@ -5,6 +5,18 @@ Shadow layout, shadow view for android.
 
 # How to use：
 `It's very simple to use.`
+### Gradle:
+```
+compile 'com.github.wangjiegulu:ShadowViewHelper:1.0.0'
+```
+### Maven:
+```
+<dependency>
+    <groupId>com.github.wangjiegulu</groupId>
+    <artifactId>ShadowViewHelper</artifactId>
+    <version>1.0.0</version>
+</dependency>
+```
 ### xml:
 ```
 <LinearLayout
