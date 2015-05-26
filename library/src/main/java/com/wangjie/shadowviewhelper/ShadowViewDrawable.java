@@ -18,7 +18,6 @@ public class ShadowViewDrawable extends Drawable {
     private Paint paint;
 
     private RectF bounds = new RectF();
-    private float halfLen;
 
     private int width;
     private int height;
@@ -60,10 +59,6 @@ public class ShadowViewDrawable extends Drawable {
             this.bounds.right = bounds.right;
             this.bounds.top = bounds.top;
             this.bounds.bottom = bounds.bottom;
-            halfLen = Math.min(
-                    (this.bounds.right - this.bounds.left) / 2,
-                    (this.bounds.bottom - this.bounds.top) / 2
-            );
             width = (int) (this.bounds.right - this.bounds.left);
             height = (int) (this.bounds.bottom - this.bounds.top);
 
