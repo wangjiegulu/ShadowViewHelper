@@ -6,11 +6,11 @@ Shadow layout, shadow view for android.
 # How to use：
 `It's very simple to use.`
 ### Gradle:
-```
+```groovy
 compile 'com.github.wangjiegulu:ShadowViewHelper:1.0.0'
 ```
 ### Maven:
-```
+```xml
 <dependency>
     <groupId>com.github.wangjiegulu</groupId>
     <artifactId>ShadowViewHelper</artifactId>
