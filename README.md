@@ -1,7 +1,7 @@
 # ShadowViewHelper
 Shadow layout, shadow view for android.
 
-<img src='https://raw.githubusercontent.com/wangjiegulu/ShadowViewHelper/master/screenshot/shadow_a.png' height='500px'/>
+<img src='screenshot/shadow_a.png' height='500px'/>
 
 # How to use：
 `It's very simple to use.`
@@ -18,7 +18,7 @@ compile 'com.github.wangjiegulu:ShadowViewHelper:1.0.0'
 </dependency>
 ```
 ### xml:
-```
+```xml
 <LinearLayout
       android:id="@+id/activity_main_shadow_view_b"
       android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -39,7 +39,7 @@ compile 'com.github.wangjiegulu:ShadowViewHelper:1.0.0'
 </LinearLayout>
 ```
 ### Activity:
-```
+```java
 ShadowViewHelper.bindShadowHelper(
     new ShadowProperty()
         .setShadowColor(0x77000000)
