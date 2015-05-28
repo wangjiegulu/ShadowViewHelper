@@ -1,16 +1,16 @@
 # ShadowViewHelper
 Shadow layout, shadow view for android.
 
-<img src='https://raw.githubusercontent.com/wangjiegulu/ShadowViewHelper/master/screenshot/shadow_a.png' height='500px'/>
+<img src='screenshot/shadow_a.png' height='500px'/>
 
 # How to use：
 `It's very simple to use.`
 ### Gradle:
-```
+```groovy
 compile 'com.github.wangjiegulu:ShadowViewHelper:1.0.0'
 ```
 ### Maven:
-```
+```xml
 <dependency>
     <groupId>com.github.wangjiegulu</groupId>
     <artifactId>ShadowViewHelper</artifactId>
@@ -18,7 +18,7 @@ compile 'com.github.wangjiegulu:ShadowViewHelper:1.0.0'
 </dependency>
 ```
 ### xml:
-```
+```xml
 <LinearLayout
       android:id="@+id/activity_main_shadow_view_b"
       android:layout_width="wrap_content" android:layout_height="wrap_content"
@@ -39,7 +39,7 @@ compile 'com.github.wangjiegulu:ShadowViewHelper:1.0.0'
 </LinearLayout>
 ```
 ### Activity:
-```
+```java
 ShadowViewHelper.bindShadowHelper(
     new ShadowProperty()
         .setShadowColor(0x77000000)
@@ -65,3 +65,5 @@ License
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
     limitations under the License.
+
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-ShadowViewHelper-brightgreen.svg?style=flat)](http://android-arsenal.com/details/1/1884)
