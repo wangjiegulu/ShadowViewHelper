@@ -3,7 +3,9 @@ package com.wangjie.shadowviewhelper.example;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.wangjie.androidbucket.utils.ABTextUtil;
+import com.wangjie.androidinject.annotation.annotations.base.AIClick;
 import com.wangjie.androidinject.annotation.annotations.base.AILayout;
 import com.wangjie.androidinject.annotation.annotations.base.AIView;
 import com.wangjie.androidinject.annotation.present.AIActionBarActivity;
@@ -22,6 +24,8 @@ public class MainActivity extends AIActionBarActivity {
     private View shadowViewC;
     @AIView(R.id.activity_main_shadow_view_c_iv)
     private View shadowImageC;
+    @AIView(R.id.activity_main_shadow_view_c_tv)
+    private TextView shadowTvC;
 
     @AIView(R.id.activity_main_shadow_view_d)
     private View shadowImageD;
@@ -74,5 +78,15 @@ public class MainActivity extends AIActionBarActivity {
 
     }
 
-
+    @Override
+    @AIClick(R.id.activity_main_shadow_view_c_iv)
+    public void onClickCallbackSample(View view) {
+        switch(view.getId()){
+            case R.id.activity_main_shadow_view_c_iv:
+                shadowTvC.append("hello world!...");
+                break;
+            default:
+                break;
+        }
+    }
 }

@@ -70,10 +70,12 @@
                         android:layout_width="wrap_content" android:layout_height="match_parent"
                         android:src="@mipmap/ic_launcher"
                         />
-                <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-                          android:gravity="center"
-                          android:text="Shadow View with LinearLayout"
-                          android:textSize="15sp"
+                <TextView
+                        android:id="@+id/activity_main_shadow_view_c_tv"
+                        android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:text="Shadow View with LinearLayout"
+                        android:textSize="15sp"
                         />
             </LinearLayout>
 

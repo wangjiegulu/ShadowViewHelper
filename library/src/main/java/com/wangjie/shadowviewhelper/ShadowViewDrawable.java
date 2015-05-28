@@ -25,6 +25,8 @@ public class ShadowViewDrawable extends Drawable {
     private ShadowProperty shadowProperty;
     private int shadowOffset;
 
+    private RectF drawRect;
+
     private float rx;
     private float ry;
 
@@ -49,6 +51,7 @@ public class ShadowViewDrawable extends Drawable {
          */
         paint.setShadowLayer(shadowProperty.getShadowRadius(), shadowProperty.getShadowDx(), shadowProperty.getShadowDy(), shadowProperty.getShadowColor());
 
+        drawRect = new RectF();
     }
 
     @Override
@@ -62,14 +65,17 @@ public class ShadowViewDrawable extends Drawable {
             width = (int) (this.bounds.right - this.bounds.left);
             height = (int) (this.bounds.bottom - this.bounds.top);
 
+            drawRect = new RectF(shadowOffset, shadowOffset, width - shadowOffset, height - shadowOffset);
+
             invalidateSelf();
+
         }
     }
 
     @Override
     public void draw(Canvas canvas) {
         canvas.drawRoundRect(
-                new RectF(shadowOffset, shadowOffset, width - shadowOffset, height - shadowOffset),
+                drawRect,
                 rx, ry,
                 paint
         );
