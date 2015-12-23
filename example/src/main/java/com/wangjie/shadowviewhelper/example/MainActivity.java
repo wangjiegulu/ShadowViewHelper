@@ -1,5 +1,6 @@
 package com.wangjie.shadowviewhelper.example;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -59,7 +60,7 @@ public class MainActivity extends AIActionBarActivity {
                 new ShadowProperty()
                         .setShadowColor(0x77000000)
                         .setShadowRadius(ABTextUtil.dip2px(context, 6))
-                , shadowViewC);
+                , shadowViewC, Color.RED, Color.YELLOW);
 
         ShadowViewHelper.bindShadowHelper(
                 new ShadowProperty()
@@ -68,21 +69,19 @@ public class MainActivity extends AIActionBarActivity {
                 , shadowImageC);
 
         // View D
-        int r = ABTextUtil.dip2px(context, 4);
+        float r = ABTextUtil.dip2px(context, 4);
         ShadowViewHelper.bindShadowHelper(
                 new ShadowProperty()
                         .setShadowColor(0x77000000)
                         .setShadowRadius(ABTextUtil.dip2px(context, 5))
                 , shadowImageD, r, r);
-
-
     }
 
     @Override
-    @AIClick(R.id.activity_main_shadow_view_c_iv)
+    @AIClick(R.id.activity_main_shadow_view_c)
     public void onClickCallbackSample(View view) {
         switch(view.getId()){
-            case R.id.activity_main_shadow_view_c_iv:
+            case R.id.activity_main_shadow_view_c:
                 shadowTvC.append("hello world!...");
                 break;
             default:
