@@ -5,47 +5,48 @@ Shadow layout, shadow view for android.
 
 # How to use：
 `It's very simple to use.`
-### Gradle:
+### Gradle([Check newest version](http://search.maven.org/#search%7Cga%7C1%7CShadowViewHelper)):
 ```groovy
-compile 'com.github.wangjiegulu:ShadowViewHelper:1.0.1'
+compile 'com.github.wangjiegulu:ShadowViewHelper:x.x.x'
 ```
-### Maven:
+### Maven([Check newest version](http://search.maven.org/#search%7Cga%7C1%7CShadowViewHelper)):
 ```xml
 <dependency>
     <groupId>com.github.wangjiegulu</groupId>
     <artifactId>ShadowViewHelper</artifactId>
-    <version>1.0.1</version>
+    <version>x.x.x</version>
 </dependency>
 ```
 ### xml:
 ```xml
 <LinearLayout
-      android:id="@+id/activity_main_shadow_view_b"
-      android:layout_width="wrap_content" android:layout_height="wrap_content"
-      android:layout_gravity="center"
-      android:layout_marginTop="32dp"
-      android:orientation="vertical"
-      android:gravity="center"
-      android:padding="8dp"
+      android:id="@+id/activity_main_shadow_view"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
       >
-      <ImageView android:layout_width="match_parent" android:layout_height="match_parent"
-                 android:src="@mipmap/ic_launcher"
-              />
-      <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="Shadow View with LinearLayout"
-                android:textSize="15sp"
-              />
 </LinearLayout>
 ```
 ### Activity:
 ```java
-ShadowViewHelper.bindShadowHelper(
-    new ShadowProperty()
+// all side shadow
+ShadowProperty sp = new ShadowProperty()
         .setShadowColor(0x77000000)
-        .setShadowDy(ABTextUtil.dip2px(context, 0.5f))
-        .setShadowRadius(ABTextUtil.dip2px(context, 3))
-    , findViewById(R.id.activity_main_shadow_view_b));
+        .setShadowDy(dip2px(this, 0.5f))
+        .setShadowRadius(dip2px(this, 3))
+        .setShadowSide(ShadowProperty.ALL);
+ShadowViewDrawable sd = new ShadowViewDrawable(sp, Color.WHITE, 0, 0);
+ViewCompat.setBackground(shadowViewA, sd);
+ViewCompat.setLayerType(shadowViewA, ViewCompat.LAYER_TYPE_SOFTWARE, null);
+
+// only all sides except top shadow
+ShadowProperty sp = new ShadowProperty()
+        .setShadowColor(0x770000FF)
+        .setShadowDy(dip2px(this, 0.5f))
+        .setShadowRadius(dip2px(this, 3))
+        .setShadowSide(ShadowProperty.LEFT | ShadowProperty.RIGHT | ShadowProperty.BOTTOM);
+ShadowViewDrawable sd = new ShadowViewDrawable(sp, Color.TRANSPARENT, 0, 0);
+ViewCompat.setBackground(shadowViewD, sd);
+ViewCompat.setLayerType(shadowViewD, ViewCompat.LAYER_TYPE_SOFTWARE, null);
 ```
 
 

@@ -35,7 +35,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
         shadowTvC = (TextView) findViewById(R.id.activity_main_shadow_view_c_tv);
 
-        // all side shadow
+        // all sides shadow
         ShadowProperty sp = new ShadowProperty()
                 .setShadowColor(0x77000000)
                 .setShadowDy(dip2px(this, 0.5f))
@@ -45,7 +45,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         ViewCompat.setBackground(shadowViewA, sd);
         ViewCompat.setLayerType(shadowViewA, ViewCompat.LAYER_TYPE_SOFTWARE, null);
 
-        // only left and top side shadow
+        // only left and top sides shadow
         sp = new ShadowProperty()
                 .setShadowColor(0x77FF0000)
                 .setShadowDy(dip2px(this, 0.5f))
@@ -55,7 +55,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         ViewCompat.setBackground(shadowViewB, sd);
         ViewCompat.setLayerType(shadowViewB, ViewCompat.LAYER_TYPE_SOFTWARE, null);
 
-        // only top and bottom side shadow
+        // only top and bottom sides shadow
         sp = new ShadowProperty()
                 .setShadowColor(0x77000000)
                 .setShadowDy(dip2px(this, 0.5f))
@@ -75,7 +75,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
         ViewCompat.setLayerType(shadowImageC, ViewCompat.LAYER_TYPE_SOFTWARE, null);
 
 
-        // only top and bottom side shadow
+        // only all sides except top shadow
         sp = new ShadowProperty()
                 .setShadowColor(0x770000FF)
                 .setShadowDy(dip2px(this, 0.5f))
