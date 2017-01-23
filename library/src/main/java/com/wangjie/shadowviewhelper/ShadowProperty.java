@@ -8,6 +8,12 @@ import java.io.Serializable;
  * Date: 5/25/15.
  */
 public class ShadowProperty implements Serializable {
+    public static final int ALL = 0x1111;
+    public static final int LEFT = 0x0001;
+    public static final int TOP = 0x0010;
+    public static final int RIGHT = 0x0100;
+    public static final int BOTTOM = 0x1000;
+
     /**
      * 阴影颜色
      */
@@ -24,6 +30,20 @@ public class ShadowProperty implements Serializable {
      * 阴影y偏移
      */
     private int shadowDy;
+
+    /**
+     * 阴影边
+     */
+    private int shadowSide = ALL;
+
+    public int getShadowSide() {
+        return shadowSide;
+    }
+
+    public ShadowProperty setShadowSide(int shadowSide) {
+        this.shadowSide = shadowSide;
+        return this;
+    }
 
     public int getShadowOffset() {
         return getShadowOffsetHalf() * 2;

@@ -68,6 +68,7 @@
                 <ImageView
                         android:id="@+id/activity_main_shadow_view_c_iv"
                         android:layout_width="wrap_content" android:layout_height="match_parent"
+                        android:padding="10dp"
                         android:src="@mipmap/ic_launcher"
                         />
                 <TextView

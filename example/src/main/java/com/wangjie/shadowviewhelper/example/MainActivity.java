@@ -1,91 +1,113 @@
 package com.wangjie.shadowviewhelper.example;
 
+import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.view.ViewCompat;
 import android.view.View;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.wangjie.androidbucket.utils.ABTextUtil;
-import com.wangjie.androidinject.annotation.annotations.base.AIClick;
-import com.wangjie.androidinject.annotation.annotations.base.AILayout;
-import com.wangjie.androidinject.annotation.annotations.base.AIView;
-import com.wangjie.androidinject.annotation.present.AIActionBarActivity;
+
 import com.wangjie.shadowviewhelper.ShadowProperty;
-import com.wangjie.shadowviewhelper.ShadowViewHelper;
+import com.wangjie.shadowviewhelper.ShadowViewDrawable;
 
-@AILayout(R.layout.activity_main)
-public class MainActivity extends AIActionBarActivity {
-    @AIView(R.id.activity_main_shadow_view_a)
+public class MainActivity extends Activity implements View.OnClickListener {
     private View shadowViewA;
-
-    @AIView(R.id.activity_main_shadow_view_b)
     private View shadowViewB;
-
-    @AIView(R.id.activity_main_shadow_view_c)
     private View shadowViewC;
-    @AIView(R.id.activity_main_shadow_view_c_iv)
     private View shadowImageC;
-    @AIView(R.id.activity_main_shadow_view_c_tv)
     private TextView shadowTvC;
 
-    @AIView(R.id.activity_main_shadow_view_d)
-    private View shadowImageD;
+    private View shadowViewD;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        // View A
-        ShadowProperty shadowProperty = new ShadowProperty()
+        shadowViewA = findViewById(R.id.activity_main_shadow_view_a);
+        shadowViewB = findViewById(R.id.activity_main_shadow_view_b);
+        shadowViewC = findViewById(R.id.activity_main_shadow_view_c);
+        shadowViewC.setOnClickListener(this);
+
+        shadowImageC = findViewById(R.id.activity_main_shadow_view_c_iv);
+        shadowViewD = findViewById(R.id.activity_main_shadow_view_d);
+
+        shadowTvC = (TextView) findViewById(R.id.activity_main_shadow_view_c_tv);
+
+        // all side shadow
+        ShadowProperty sp = new ShadowProperty()
                 .setShadowColor(0x77000000)
-                .setShadowRadius(ABTextUtil.dip2px(context, 4));
+                .setShadowDy(dip2px(this, 0.5f))
+                .setShadowRadius(dip2px(this, 3))
+                .setShadowSide(ShadowProperty.ALL);
+        ShadowViewDrawable sd = new ShadowViewDrawable(sp, Color.WHITE, 0, 0);
+        ViewCompat.setBackground(shadowViewA, sd);
+        ViewCompat.setLayerType(shadowViewA, ViewCompat.LAYER_TYPE_SOFTWARE, null);
 
-        ShadowViewHelper.bindShadowHelper(shadowProperty, shadowViewA);
-        LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) shadowViewA.getLayoutParams();
-        lp.leftMargin = -shadowProperty.getShadowOffset();
-        lp.rightMargin = -shadowProperty.getShadowOffset();
-        shadowViewA.setLayoutParams(lp);
+        // only left and top side shadow
+        sp = new ShadowProperty()
+                .setShadowColor(0x77FF0000)
+                .setShadowDy(dip2px(this, 0.5f))
+                .setShadowRadius(dip2px(this, 3))
+                .setShadowSide(ShadowProperty.LEFT | ShadowProperty.BOTTOM);
+        sd = new ShadowViewDrawable(sp, Color.TRANSPARENT, 0, 0);
+        ViewCompat.setBackground(shadowViewB, sd);
+        ViewCompat.setLayerType(shadowViewB, ViewCompat.LAYER_TYPE_SOFTWARE, null);
+
+        // only top and bottom side shadow
+        sp = new ShadowProperty()
+                .setShadowColor(0x77000000)
+                .setShadowDy(dip2px(this, 0.5f))
+                .setShadowRadius(dip2px(this, 3))
+                .setShadowSide(ShadowProperty.TOP | ShadowProperty.BOTTOM);
+        sd = new ShadowViewDrawable(sp, Color.WHITE, 0, 0);
+        ViewCompat.setBackground(shadowViewC, sd);
+        ViewCompat.setLayerType(shadowViewC, ViewCompat.LAYER_TYPE_SOFTWARE, null);
+
+        sp = new ShadowProperty()
+                .setShadowColor(0x77000000)
+                .setShadowDy(dip2px(this, 0.5f))
+                .setShadowRadius(dip2px(this, 3))
+                .setShadowSide(ShadowProperty.BOTTOM | ShadowProperty.RIGHT);
+        sd = new ShadowViewDrawable(sp, Color.WHITE, 0, 0);
+        ViewCompat.setBackground(shadowImageC, sd);
+        ViewCompat.setLayerType(shadowImageC, ViewCompat.LAYER_TYPE_SOFTWARE, null);
 
 
-        // View B
-        ShadowViewHelper.bindShadowHelper(
-                new ShadowProperty()
-                        .setShadowColor(0x77000000)
-                        .setShadowDy(ABTextUtil.dip2px(context, 0.5f))
-                        .setShadowRadius(ABTextUtil.dip2px(context, 3))
-                , shadowViewB);
+        // only top and bottom side shadow
+        sp = new ShadowProperty()
+                .setShadowColor(0x770000FF)
+                .setShadowDy(dip2px(this, 0.5f))
+                .setShadowRadius(dip2px(this, 3))
+                .setShadowSide(ShadowProperty.LEFT | ShadowProperty.RIGHT | ShadowProperty.BOTTOM);
+        sd = new ShadowViewDrawable(sp, Color.TRANSPARENT, 0, 0);
+        ViewCompat.setBackground(shadowViewD, sd);
+        ViewCompat.setLayerType(shadowViewD, ViewCompat.LAYER_TYPE_SOFTWARE, null);
 
-        // View C
-        ShadowViewHelper.bindShadowHelper(
-                new ShadowProperty()
-                        .setShadowColor(0x77000000)
-                        .setShadowRadius(ABTextUtil.dip2px(context, 6))
-                , shadowViewC, Color.RED, Color.YELLOW);
 
-        ShadowViewHelper.bindShadowHelper(
-                new ShadowProperty()
-                        .setShadowColor(0x77000000)
-                        .setShadowRadius(ABTextUtil.dip2px(context, 4))
-                , shadowImageC);
-
-        // View D
-        float r = ABTextUtil.dip2px(context, 4);
-        ShadowViewHelper.bindShadowHelper(
-                new ShadowProperty()
-                        .setShadowColor(0x77000000)
-                        .setShadowRadius(ABTextUtil.dip2px(context, 5))
-                , shadowImageD, r, r);
     }
 
+
     @Override
-    @AIClick(R.id.activity_main_shadow_view_c)
-    public void onClickCallbackSample(View view) {
-        switch(view.getId()){
+    public void onClick(View v) {
+        switch (v.getId()) {
             case R.id.activity_main_shadow_view_c:
-                shadowTvC.append("hello world!...");
+                shadowTvC.append("hello shadow!...");
                 break;
             default:
                 break;
         }
     }
+
+    public static int dip2px(Context context, float dpValue) {
+        try {
+            final float scale = context.getResources().getDisplayMetrics().density;
+            return (int) (dpValue * scale + 0.5f);
+        } catch (Throwable throwable) {
+            // igonre
+        }
+        return 0;
+    }
+
 }

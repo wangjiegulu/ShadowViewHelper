@@ -65,21 +65,38 @@ public class ShadowViewDrawable extends Drawable {
             width = (int) (this.bounds.right - this.bounds.left);
             height = (int) (this.bounds.bottom - this.bounds.top);
 
-            drawRect = new RectF(shadowOffset, shadowOffset, width - shadowOffset, height - shadowOffset);
+//            drawRect = new RectF(shadowOffset, shadowOffset, width - shadowOffset, height - shadowOffset);
+//            drawRect = new RectF(0, 0, width, height - shadowOffset);
+
+            int shadowSide = shadowProperty.getShadowSide();
+            int left = (shadowSide & ShadowProperty.LEFT) == ShadowProperty.LEFT ? shadowOffset : 0;
+            int top = (shadowSide & ShadowProperty.TOP) == ShadowProperty.TOP ? shadowOffset : 0;
+            int right = width - ((shadowSide & ShadowProperty.RIGHT) == ShadowProperty.RIGHT ? shadowOffset : 0);
+            int bottom = height - ((shadowSide & ShadowProperty.BOTTOM) == ShadowProperty.BOTTOM ? shadowOffset : 0);
+
+            drawRect = new RectF(left, top, right, bottom);
+
 
             invalidateSelf();
 
         }
     }
 
+    private PorterDuffXfermode srcOut = new PorterDuffXfermode(PorterDuff.Mode.SRC_OUT);
+
     @Override
     public void draw(Canvas canvas) {
+        paint.setXfermode(null);
+
         canvas.drawRoundRect(
                 drawRect,
                 rx, ry,
                 paint
         );
 
+        paint.setXfermode(srcOut);
+//        paint.setColor(Color.TRANSPARENT);
+        canvas.drawRoundRect(drawRect, rx, ry, paint);
     }
 
     public ShadowViewDrawable setColor(int color) {
@@ -99,6 +116,6 @@ public class ShadowViewDrawable extends Drawable {
 
     @Override
     public int getOpacity() {
-        return 0;
+        return PixelFormat.UNKNOWN;
     }
 }
