@@ -1,11 +1,11 @@
-// *********************************************************************
+// ********************************** upload archives ***********************************
 
 apply plugin: 'maven'
 apply plugin: 'signing' //使用signing plugin做数字签名
 
 //定义GroupID和Version，ArtefactID会自动使用Project名
-group = 'com.github.wangjiegulu'
-version = '1.0.3'
+group = "$archiveGroup"
+version = "$archiveVersion"
 //sourceCompatibility = 1.7
 //targetCompatibility = 1.7
 
@@ -18,10 +18,10 @@ task androidJavadocs(type: Javadoc) {
     classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
 }
 
-//task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
-//    classifier = 'javadoc'
-//    from androidJavadocs.destinationDir
-//}
+task androidJavadocsJar(type: Jar, dependsOn: androidJavadocs) {
+    classifier = 'javadoc'
+    from androidJavadocs.destinationDir
+}
 
 task androidSourcesJar(type: Jar) {
     classifier = 'sources'
@@ -37,11 +37,6 @@ signing {
     sign configurations.archives
 }
 
-// dependencies {
-//    compile 'com.android.support:support-v4:21.0.0'
-//    compile 'com.android.support:recyclerview-v7:+'
-// }
-
 uploadArchives {
     repositories {
         mavenDeployer {
@@ -50,23 +45,28 @@ uploadArchives {
 
             //指定项目部署到的中央库地址，UserName和Password就是Part 1中注册的账号。
             repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+                authentication(userName: "$ossrhUsername", password: "$ossrhPassword")
             }
             snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
-                authentication(userName: ossrhUsername, password: ossrhPassword)
+                authentication(userName: "$ossrhUsername", password: "$ossrhPassword")
             }
+
+//            addFilter("$archiveName") {artifact, file ->
+//                artifact.name.endsWith("$archiveName")
+//            }
 
             //构造项目的Pom文件，参见Part 2中Pom文件的规范，不要遗漏必填项
             pom.project {
-                name project.name
+                name "$archiveName"
+                artifactId "$archiveName"
                 packaging 'aar'
-                description 'Shadow layout, shadow view for android.'
-                url 'https://github.com/wangjiegulu/ShadowViewHelper'
+                description "$archiveDesc"
+                url "$archiveUrl"
 
                 scm {
-                    url 'scm:git@github.com:wangjiegulu/ShadowViewHelper.git'
-                    connection 'scm:git@github.com:wangjiegulu/ShadowViewHelper.git'
-                    developerConnection 'git@github.com:wangjiegulu/ShadowViewHelper.git'
+                    url "$scmUrl"
+                    connection "$scmUrl"
+                    developerConnection "$scmDeveloperConnection"
                 }
 
                 licenses {
@@ -88,4 +88,3 @@ uploadArchives {
         }
     }
 }
-

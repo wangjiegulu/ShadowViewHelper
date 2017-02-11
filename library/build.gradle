@@ -20,7 +20,7 @@ android {
         minSdkVersion 9
         targetSdkVersion 25
         versionCode 4
-        versionName "1.0.3"
+        versionName "1.0.4"
     }
     buildTypes {
         release {
@@ -42,4 +42,4 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.0.0'
 }
 
-//apply from: 'upload.gradle'
+apply from: 'nexus_aar_center.gradle'
